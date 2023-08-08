@@ -6,6 +6,10 @@ export function useProduct() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    function addProduct(product:Iproduct){
+      setProducts(prev => [...prev,product] )
+    }
+
 async function fetchProducts() {
   try {
     setLoading(true);
@@ -30,5 +34,5 @@ useEffect(()=>{
   fetchProducts()
 },[])
 
-return {products,loading,error}
+return {products,loading,error,addProduct}
 }
